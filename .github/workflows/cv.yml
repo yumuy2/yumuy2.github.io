@@ -1,0 +1,20 @@
+name: Build CV
+on:
+  push:
+    paths: ['CV.tex']
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: xu-cheng/latex-action@v3
+        with:
+          root_file: CV.tex
+      - run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add -f CV.pdf
+          git diff --staged --quiet || git commit -m "Rebuild CV"
+          git push
