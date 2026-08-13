@@ -1,0 +1,591 @@
+%
+%Academic CV LaTeX Template
+% Author: Dubasi Pavan Kumar
+% LinkedIn: https://www.linkedin.com/in/im-pavankumar/
+% License: MIT
+%
+% For errors, suggestions, or improvements, please contact:
+% Email: pavankumard.pg19.ma@nitp.ac.in
+%
+
+
+
+\documentclass[a4paper,11pt]{article}
+
+% Package imports
+\usepackage{latexsym}
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage{ragged2e}
+\usepackage[empty]{fullpage}
+\usepackage{wrapfig}
+\usepackage{lipsum}
+\usepackage{tabularx}
+\usepackage{titlesec}
+\usepackage{geometry}
+\usepackage{marvosym}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{cfr-lm}
+\usepackage[T1]{fontenc}
+\usepackage{fontawesome5}
+
+% Color definitions
+\definecolor{darkblue}{RGB}{0,0,139}
+
+% Page layout
+\setlength{\multicolsep}{0pt} 
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\geometry{left=1.4cm, top=0.8cm, right=1.2cm, bottom=1cm}
+\setlength{\footskip}{5pt} % Addressing fancyhdr warning
+
+% Hyperlink setup (moved after fancyhdr to address warning)
+\usepackage[hidelinks]{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=darkblue,
+    filecolor=darkblue,
+    urlcolor=darkblue,
+}
+
+% Custom box settings
+\usepackage[most]{tcolorbox}
+\tcbset{
+    frame code={},
+    center title,
+    left=0pt,
+    right=0pt,
+    top=0pt,
+    bottom=0pt,
+    colback=gray!20,
+    colframe=white,
+    width=\dimexpr\textwidth\relax,
+    enlarge left by=-2mm,
+    boxsep=4pt,
+    arc=0pt,outer arc=0pt,
+}
+
+% URL style
+\urlstyle{same}
+
+% Text alignment
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Section formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-7pt}]
+
+% Custom commands
+\newcommand{\resumeItem}[2]{
+  \item{
+    \textbf{#1}{\hspace{0.5mm}#2 \vspace{-0.5mm}}
+  }
+}
+
+\newcommand{\resumePOR}[3]{
+\vspace{0.5mm}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+        \textbf{#1}\hspace{0.3mm}#2 & \textit{\small{#3}} 
+    \end{tabular*}
+    \vspace{-2mm}
+}
+
+\newcommand{\resumeSubheading}[4]{
+\vspace{0.5mm}\item
+    \begin{tabular*}{0.98\textwidth}[t]{l@{\extracolsep{\fill}}r}
+        \textbf{#1} & \textit{\footnotesize{#4}} \\
+        \textit{\footnotesize{#3}} &  \footnotesize{#2}\\
+    \end{tabular*}
+    \vspace{-2.4mm}
+}
+
+\newcommand{\resumeProject}[4]{
+\vspace{0.5mm}\item
+    \begin{tabular*}{0.98\textwidth}[t]{l@{\extracolsep{\fill}}r}
+        \textbf{#1} & \textit{\footnotesize{#3}} \\
+        \footnotesize{\textit{#2}} & \footnotesize{#4}
+    \end{tabular*}
+    \vspace{-2.4mm}
+}
+
+\newcommand{\resumeSubItem}[2]{\resumeItem{#1}{#2}\vspace{-4pt}}
+
+\renewcommand{\labelitemi}{$\vcenter{\hbox{\tiny$\bullet$}}$}
+\renewcommand{\labelitemii}{$\vcenter{\hbox{\tiny$\circ$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=*,labelsep=1mm]}
+\newcommand{\resumeHeadingSkillStart}{\begin{itemize}[leftmargin=*,itemsep=1.7mm, rightmargin=2ex]}
+\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=*,labelsep=1mm,itemsep=0.5mm]}
+
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}\vspace{2mm}}
+\newcommand{\resumeHeadingSkillEnd}{\end{itemize}\vspace{-2mm}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-2mm}}
+\newcommand{\cvsection}[1]{%
+\vspace{2mm}
+\begin{tcolorbox}
+    \textbf{\large #1}
+\end{tcolorbox}
+    \vspace{-4mm}
+}
+
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}%
+\newcolumntype{R}{>{\raggedleft\arraybackslash}X}%
+\newcolumntype{C}{>{\centering\arraybackslash}X}%
+
+% Commands for icon sizing and positioning
+\newcommand{\socialicon}[1]{\raisebox{-0.05em}{\resizebox{!}{1em}{#1}}}
+\newcommand{\ieeeicon}[1]{\raisebox{-0.3em}{\resizebox{!}{1.3em}{#1}}}
+
+% Font options
+\newcommand{\headerfonti}{\fontfamily{phv}\selectfont} % Helvetica-like (similar to Arial/Calibri)
+\newcommand{\headerfontii}{\fontfamily{ptm}\selectfont} % Times-like (similar to Times New Roman)
+\newcommand{\headerfontiii}{\fontfamily{ppl}\selectfont} % Palatino (elegant serif)
+\newcommand{\headerfontiv}{\fontfamily{pbk}\selectfont} % Bookman (readable serif)
+\newcommand{\headerfontv}{\fontfamily{pag}\selectfont} % Avant Garde-like (similar to Trebuchet MS)
+\newcommand{\headerfontvi}{\fontfamily{cmss}\selectfont} % Computer Modern Sans Serif
+\newcommand{\headerfontvii}{\fontfamily{qhv}\selectfont} % Quasi-Helvetica (another Arial/Calibri alternative)
+\newcommand{\headerfontviii}{\fontfamily{qpl}\selectfont} % Quasi-Palatino (another elegant serif option)
+\newcommand{\headerfontix}{\fontfamily{qtm}\selectfont} % Quasi-Times (another Times New Roman alternative)
+\newcommand{\headerfontx}{\fontfamily{bch}\selectfont} % Charter (clean serif font)
+
+\newlist{publist}{enumerate}{1}
+\setlist[publist,1]{
+    label=\textbf{[J.\arabic*]},  % J for Journal, C for Conference, P for Preprint
+    leftmargin=*, 
+    labelsep=0.5em,
+    align=left,
+    itemindent=0em,
+    widest={[\textbf{S.1}]}, 
+    font=\small
+}
+
+\newlist{prelist}{enumerate}{1}
+\setlist[prelist,1]{
+    label=\textbf{[P.\arabic*]},  % J for Journal, C for Conference, P for Preprint
+    leftmargin=*, 
+    labelsep=0.5em,
+    align=left,
+    itemindent=0em,
+    widest={[\textbf{S.1}]}, 
+    font=\small
+}
+
+\newlist{conflist}{enumerate}{1}
+\setlist[conflist,1]{
+    label=\textbf{[C.\arabic*]},  % J for Journal, C for Conference, P for Preprint
+    leftmargin=*, 
+    labelsep=0.5em,
+    align=left,
+    itemindent=0em,
+    widest={[\textbf{S.1}]}, 
+    font=\small
+}
+
+
+\begin{document}
+\headerfontiii
+
+% Header
+\begin{center}
+    {\Huge\textbf{Yumu Yang}}
+\end{center}
+\vspace{-6mm}
+
+\begin{center}
+    % \small{
+    % +1-234-567-8900 | \href{mailto:youremail@example.com}{youremail@example.com} | 
+    % \href{https://www.yourwebsite.com/}{yourwebsite.com}
+    % }
+    \small{
+    \href{mailto:yumuy2@illinois.edu}{yumuy2@illinois.edu}
+    }
+\end{center}
+\vspace{-6mm}
+
+% \begin{center}
+%     \small{
+%     \socialicon{\faLinkedin} \href{https://www.linkedin.com/in/your-profile/}{your-profile} | 
+%     \socialicon{\faGithub} \href{https://github.com/your-username}{your-username} | 
+%     \ieeeicon{\includegraphics[height=1.3em]{ieee_collabratec_icon.png}} \href{https://ieee-collabratec.ieee.org/app/p/your-profile}{your-profile} |
+%     \socialicon{\faTwitter} \href{https://twitter.com/your-handle}{your-handle}
+%     }
+% \end{center}
+% \vspace{-6mm}
+
+\begin{center}
+    \small{
+    \href{https://inspirehep.net/authors/2846994}{iNSPIRE HEP} | \href{https://scholar.google.com/citations?view_op=list_works&hl=en&authuser=2&user=IGMIu-YAAAAJ&gmla=AFix5MbLCgZJovHFGswMy-W1eY1dQgfcuqaAbQIVuql5PNr780VyF_W1nev4Ymeny46J9O8QFbclXwziwZRWiyED2k6ist12uWd93hBvlA}{Google Scholar} | \href{https://github.com/yumuy2}{GitHub} | 
+    \href{https://gitlab.com/yumuy2}{GitLab}
+    }
+\end{center}
+\vspace{-6mm}
+
+\begin{center}
+    \small{Room 451, Loomis Laboratory, Urbana, IL, 61801}
+\end{center}
+
+\vspace{-4mm}
+
+
+
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{\textbf{Education}}
+\vspace{-0.4mm}
+\resumeSubHeadingListStart
+
+\resumeSubheading
+{PhD in Physics}{University of Illinois Urbana-Champaign}
+{Advisor since 2022: Jorge Noronha}{2020 - Current}
+
+\resumeSubheading
+{BA (Hons.) in Physics and Psychology}{Colby College}
+{Dean's List, Psi Chi Member}{2016 - 2020}
+
+\resumeSubHeadingListEnd
+\vspace{-6mm}
+
+
+
+
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{\textbf{Research Interests}}
+\vspace{-0.4mm}
+As a member of the MUSES Collaboration, I am interested in the novel equilibrium and out-of-equilibrium phenomena displayed by the hot and ultradense matter formed in neutron star mergers. These problems are beyond the reach of first-principle techniques, and in my research, I employ relativistic fluid dynamics to understand the dissipative properties of neutron star matter.  In this era of multi-messenger astrophysics with data from LIGO/Virgo and astrophysical observations from NICER, my research provides theoretical predictions that can be compared with experimental observations to gain further insight into fundamental properties of matter in extreme conditions.  
+
+
+
+
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+
+
+
+
+\section{\textbf{Experience}}
+\vspace{-0.4mm}
+  \resumeSubHeadingListStart
+  \resumeSubheading
+    {Nuclear Theory -- Noronha Group}{University of Illinois Urbana-Champaign}{Research/Teaching Assistant}{2022 - Current}
+    \resumeItemListStart
+      \item Developed and maintained the holographic module for the NSF MUSES Collaboration.
+      \item 2024 - 2025: Organized the MUSES Collaboration Seminars.
+      \item Determined the bulk viscosity of nuclear matter at saturation density; calculated new bulk-viscous transport coefficients in neutron star matter; studied the effects of the nuclear equation of state on the dissipative properties of neutron star mergers/inspirals.
+    \resumeItemListEnd
+  \resumeSubheading
+      {Biological Physics -- Golding Lab}{University of Illinois Urbana-Champaign}
+      {Research/Teaching Assistant -- Golding Group}{2020 - 2022}
+      \resumeItemListStart
+        \item Studied cell transcription with experimental techniques such as smFISH.
+      \resumeItemListEnd 
+  \resumeSubheading
+    {DarkSide Collaboration (dark matter experiment)}{Gran Sasso National Laboratory, Italy}
+      {Research Assistant}{Summer 2019}
+    \resumeItemListStart
+      \item Tested Silicon Photomultipliers in both room temperature and cryogenic conditions.
+    \resumeItemListEnd
+  \resumeSubheading
+    {Colby College}{}
+      {Research/Teaching Assistant}{2017 - 2020}
+    \resumeItemListStart
+      \item Studied autocatalytic reactions, modeled and simulated the perturbed Brusselator.
+      \item Built laser diodes.
+      \item Graded students' homework and tutored physics courses.
+    \resumeItemListEnd
+  \resumeSubHeadingListEnd
+\vspace{-6mm}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{\textbf{Honors}}
+\vspace{-0.4mm}
+  \resumeSubHeadingListStart
+  \resumeSubheading
+    {Vijay R. Pandharipande Prize in Nuclear Physics}{University of Illinois Urbana-Champaign}{Competitive departmental research award (\$2000)}{2026}
+  \resumeSubheading
+    {Mavis Future Faculty Fellow}{University of Illinois Urbana-Champaign}{Fellowship supporting PhD students preparing for academic careers (\$2000)}{2026-2027}
+  \resumeSubheading
+    {Tau Beta Pi}{University of Illinois Urbana-Champaign}{Engineering Honor Society}{2022-Present}
+  \resumeSubHeadingListEnd
+ % \resumeHeadingSkillStart
+ %  \resumeSubItem{2026 Vijay R. Pandharipande Prize in Nuclear Physics, }
+ %    {University of Illinois Urbana-Champaign}
+ %  \resumeSubItem{2026-27 Mavis Future Faculty Fellow, }
+ %    {University of Illinois Urbana-Champaign}
+ %  \resumeSubItem{Tau Beta Pi Engineering Honor Society, }
+ %    {University of Illinois Urbana-Champaign}
+ % \resumeHeadingSkillEnd
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{\textbf{Technical Skills}}
+\vspace{-0.4mm}
+ \resumeHeadingSkillStart
+  \resumeSubItem{Programming Languages: }
+    {C++, Python, Matlab, Mathematica.}
+ \resumeHeadingSkillEnd
+
+
+
+
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+\section{\textbf{List of Publications} \hfill \textcolor{darkblue}{\scriptsize C=Conference, J=Journal, P=ArXiv Preprint}}
+\vspace{0.2mm}
+\small{
+
+\begin{prelist}
+
+\item Johannes Jahan, Kevin P. Pala, \textbf{Yumu Yang} et al., ``Studying the QCD Matter produced in Heavy-Ion Collisions using the MUSES Calculation Engine,'' \href{https://arxiv.org/abs/2606.26326}{arXiv: 2606.26326 [nucl-th]}. 
+
+\item Abhishek Hegade, \textbf{Yumu Yang} et al., ``Dynamical tidal response of neutron stars as a probe of dense-matter properties,'' \href{https://arxiv.org/abs/2603.26886}{arXiv: 2603.26886 [gr-qc]}, submitted to PRD. 
+
+\item Musa Khan, Ayrton Nascimento, \textbf{Yumu Yang} et al., ``Uncertainty quantification of holographic transport and energy loss for the hot and baryon-dense QGP,'' \href{https://arxiv.org/abs/2603.20482}{arXiv: 2603.20482 [nucl-th]}, submitted to PRD.
+\end{prelist}
+
+\begin{publist}
+\item \textbf{Yumu Yang} et al., ``Merging multidimensional equations of state of strongly interacting matter via a statistical mixture,'' Phys.Rev.D 113 (2026), \href{https://arxiv.org/abs/2601.07987}{arXiv: 2601.07987 [nucl-th]}. 
+
+\item Isabella Danhoni, \textbf{Yumu Yang}, Mauricio Hippert, and Jacquelyn Noronha-Hostler, ``Symmetry Energy of 2+1-flavor dense quark matter from perturbative QCD,'' Phys.Rev.C 113 (2026), \href{https://arxiv.org/abs/2510.23984}{arXiv: 2510.23984 [nucl-th]}. 
+
+\item \textbf{Yumu Yang}, Nikolas Cruz Camacho, Mauricio Hippert, and Jacquelyn Noronha-Hostler, ``Symmetry-Energy Expansion with Strange Dense Matter,'' Phys.Rev.C 113 (2026), \href{https://arxiv.org/abs/2504.18764}{arXiv: 2504.18764 [nucl-th]}. 
+
+\item \textbf{Yumu Yang}, Mauricio Hippert, Enrico Speranza, and Jorge Noronha, ``Symmetry-energy dependence of the bulk viscosity of nuclear matter,'' \href{https://arxiv.org/abs/2504.07805}{Phys. Rev. Lett. 135 (2025), arXiv: 2504.07805 [nucl-th]}. 
+
+\item Mateus Pelicer et al., ``Building Neutron Stars with the MUSES Calculation Engine,'' \href{https://arxiv.org/abs/2502.07902}{Phys. Rev. D 111 (2025), arXiv: 2502.07902 [nucl-th]}. 
+
+\item \textbf{Yumu Yang}, Mauricio Hippert, Enrico Speranza, and Jorge Noronha, ``Far-from-equilibrium bulk-viscous transport coefficients in neutron star mergers,'' \href{https://arxiv.org/abs/2309.01864}{Phys. Rev. C 109 (2024), arXiv: 2309.01864 [nucl-th]}.
+
+\item Robert Bluhm and \textbf{Yumu Yang}, ``Gravity with Explicit Diffeomorphism Breaking,'' \href{https://arxiv.org/abs/2104.05879}{Symmetry 13 (2021), arXiv: 2104.05879 [gr-qc]}.
+\end{publist}
+
+\begin{conflist}
+\item \textbf{Yumu Yang}, Mauricio Hippert, Enrico Speranza, and Jorge Noronha, ``Bulk viscosity dependence on the symmetry energy,'' \href{https://inspirehep.net/files/cb070084d6f53b4ee459fbd83b334111}{Quark Matter 2025}.
+
+\item \textbf{Yumu Yang}, Mauricio Hippert, Enrico Speranza, and Jorge Noronha, ``Bulk viscosity transport coefficients in neutron star mergers,'' \href{https://arxiv.org/abs/2312.09364}{Quark Matter 2023, arXiv: 2312.09364 [nucl-th]}.
+
+\item \textbf{Yumu Yang}, Mauricio Hippert, Enrico Speranza, and Jorge Noronha, ``Second-Order Transport Coefficients in Neutron Star Mergers,'' \href{https://arxiv.org/abs/2402.06878}{Hot Quarks 2022, arXiv: 2402.06878 [nucl-th]}.
+\end{conflist}
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{\textbf{List of Oral Presentations}}
+\vspace{0.2mm}
+  \resumeSubHeadingListStart
+  \resumeSubheading
+    {Strangeness in Quark Matter 2026}{University of California Los Angeles}
+      {Connecting heavy-ion collisions to strange dense matter in neutron stars}{2026}
+      \vspace{0.4mm}
+  \resumeSubheading
+    {Workshop on High Baryon Density Physics in High-Energy}{Lawrence Berkeley National Laboratory}
+      {Nuclear matter EoS at high density region}{2026}
+      \vspace{0.4mm}
+  \resumeSubheading
+    {The MUSES Seminar Series}{online}
+      {Merging multi-dimensional equations of state via a statistical mixture}{2026}
+      \vspace{0.4mm}
+  \resumeSubheading
+    {Nuclear Physics in Mergers - Going Beyond the Equation of State}{University of Washington}
+      {Dependence of the bulk viscosity of neutron star matter on the nuclear symmetry energy}{2025}
+      \vspace{0.4mm}
+  \resumeSubheading
+    {Quark Matter 2025 (largest and most important conference in the field)}{Goethe University Frankfurt}
+      {Dependence of the bulk viscosity of neutron star matter on the nuclear symmetry energy}{2025}
+      \vspace{0.4mm}
+  \resumeSubheading
+    {Midwest Theory Get-Together 2024}{Argonne National Laboratory}
+      {How does the neutron star bulk viscosity depend on the symmetry energy?}{2024}
+      \vspace{0.4mm}
+  \resumeSubheading
+    {Quark Matter 2023}{Hilton of the Americas, Houston}
+      {Far-from-equilibrium transport coefficients in neutron star mergers}{2023}
+      \vspace{0.4mm}
+  \resumeSubheading
+    {Hot Quarks 2022}{Dao House, Estes Park, Colorado}
+      {Second-order transport coefficients in neutron star mergers}{2022}
+      \vspace{0.4mm}
+  \resumeSubheading
+    {Midwest Theory Get-Together 2022}{Argonne National Laboratory}
+      {Second-order transport coefficients in neutron star mergers}{2022}
+      \vspace{0.4mm}
+  \resumeSubHeadingListEnd
+
+
+
+
+\end{document}
