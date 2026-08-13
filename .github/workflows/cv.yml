@@ -2,6 +2,7 @@ name: Build CV
 on:
   push:
     paths: ['CV.tex']
+  workflow_dispatch:
 jobs:
   build:
     runs-on: ubuntu-latest
